@@ -55,63 +55,13 @@ ChartJS.register(
 const Dashboard = () => {
   const navigateTo = useNavigate();
   const [dataChartMax, setDataChartMax] = useState({
-    labels: ["Anggota 1", "Anggota 2"],
-    datasets: [
-      {
-        label: "Obj",
-        data: [0, 0],
-        fill: true,
-        borderColor: "#f4722b"
-      },
-      {
-        label: "X1",
-        data: [0, 0],
-        fill: false,
-        borderColor: "#742774"
-      },
-      {
-        label: "X2",
-        data: [0, 0],
-        fill: false,
-        borderColor: "#0000ff"
-      },
-      {
-        label: "X3",
-        data: [0, 0],
-        fill: false,
-        borderColor: "#b6c0b3"
-      }
-    ]
+    labels: [],
+    datasets: []
   });
 
   const [dataChartMin, setDataChartMin] = useState({
-    labels: ["Anggota 1", "Anggota 2"],
-    datasets: [
-      {
-        label: "Obj",
-        data: [0, 0],
-        fill: true,
-        borderColor: "#f4722b"
-      },
-      {
-        label: "X1",
-        data: [0, 0],
-        fill: false,
-        borderColor: "#742774"
-      },
-      {
-        label: "X2",
-        data: [0, 0],
-        fill: false,
-        borderColor: "#0000ff"
-      },
-      {
-        label: "X3",
-        data: [0, 0],
-        fill: false,
-        borderColor: "#b6c0b3"
-      }
-    ]
+    labels: [],
+    datasets: []
   });
   
   useEffect(() => {
@@ -126,19 +76,22 @@ const Dashboard = () => {
 
     let exam_max = await supabase
     .from('exam_maximizes')
-    .select('result_obj, result_x1, result_x2, result_x3')
+    .select('anggota, result_obj, result_x1, result_x2, result_x3')
     .order('anggota', {
       ascending: true}
     )
     .eq('kelompok', user.data.user.user_metadata.kelompok)
     .eq('grafik', 1);
 
-    var labelMax = ["Anggota 1", "Anggota 2"];
+    var labelMax = [];
     var arrMaxObj = [];
     var arrMaxX1 = [];
     var arrMaxX2 = [];
     var arrMaxX3 = [];
+
     exam_max.data.map(function(rows, i) {
+      labelMax.push(`Anggota ${rows.anggota}`);
+
       arrMaxObj.push(rows.result_obj)
       arrMaxX1.push(rows.result_x1)
       arrMaxX2.push(rows.result_x2)
@@ -175,21 +128,26 @@ const Dashboard = () => {
       ]
     });
 
+    
+    
     let exam_min = await supabase
     .from('exam_minimizes')
-    .select('result_obj, result_x1, result_x2, result_x3')
+    .select('anggota, result_obj, result_x1, result_x2, result_x3')
     .order('anggota', {
       ascending: true}
     )
     .eq('kelompok', user.data.user.user_metadata.kelompok)
     .eq('grafik', 1);
 
-    var labelMin = ["Anggota 1", "Anggota 2"];
+    var labelMin = [];
     var arrMinObj = [];
     var arrMinX1 = [];
     var arrMinX2 = [];
     var arrMinX3 = [];
+
     exam_min.data.map(function(rows, i) {
+      labelMin.push(`Anggota ${rows.anggota}`);
+
       arrMinObj.push(rows.result_obj)
       arrMinX1.push(rows.result_x1)
       arrMinX2.push(rows.result_x2)
@@ -224,7 +182,7 @@ const Dashboard = () => {
           borderColor: "#b6c0b3"
         }
       ]
-    })
+    });
   };
 
   return (
