@@ -131,7 +131,7 @@ const Dashboard = () => {
       ascending: true}
     )
     .eq('kelompok', user.data.user.user_metadata.kelompok)
-    .eq('status', 1);
+    .eq('grafik', 1);
 
     var labelMax = ["Anggota 1", "Anggota 2"];
     var arrMaxObj = [];
@@ -182,7 +182,7 @@ const Dashboard = () => {
       ascending: true}
     )
     .eq('kelompok', user.data.user.user_metadata.kelompok)
-    .eq('status', 1);
+    .eq('grafik', 1);
 
     var labelMin = ["Anggota 1", "Anggota 2"];
     var arrMinObj = [];

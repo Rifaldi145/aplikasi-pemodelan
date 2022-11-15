@@ -21,7 +21,13 @@ import {
     Th,
     Td,
     TableCaption,
-    TableContainer, Center
+    TableContainer, Center,Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,useDisclosure 
   } from "@chakra-ui/react";
   import Layout from './components/Layout'
   import React, { useState, useEffect } from 'react';
@@ -35,6 +41,9 @@ import {
     const [dataMax, setDataMax] = useState([]);
     const [dataMin, setDataMin] = useState([]);
     const [users, setUsers] = useState(null);
+
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen1, onOpen1, onClose1 } = useDisclosure()
   
     useEffect(() => {
       getDataMinMax();
@@ -65,10 +74,64 @@ import {
         .select('*')
         .eq('kelompok', user.data.user.user_metadata.kelompok)
         .eq('status', 1);
+
+        console.log("exam_min", exam_min);
   
       setDataMin(exam_min.data);
     };
+
+    const  grafikMaximize = async (event) => {
+      event.preventDefault();
+      if(dataMax.status == '1'){
+        alert("Error2");
+      }else{
+        
+        await supabase
+        .from('exam_maximizes')
+        .update({
+            "grafik": 1
+        })
+        .eq('kelompok', users.data.user.user_metadata.kelompok)
+        .eq('status', 1)
+        .then(async ({ data, error }) => {
+            if(error) {
+              console.log(error);
+              alert("error",error);
+            } else {
+              alert("Grafik Berhasil Dibuat");
+              navigateTo("/Grafik");     
+            }
+        });
+      }
+      
+   };
   
+    const  grafikMinimize = async (event) => {
+      event.preventDefault();
+      if(dataMin.status == '1'){
+        alert("Error2");
+      }else{
+        
+        await supabase
+        .from('exam_minimizes')
+        .update({
+            "grafik": 1
+        })
+        .eq('kelompok', users.data.user.user_metadata.kelompok)
+        .eq('status', 1)
+        .then(async ({ data, error }) => {
+            if(error) {
+              console.log(error);
+              alert("error",error);
+            } else {
+              alert("Grafik Berhasil Dibuat");
+              navigateTo("/Grafik");     
+            }
+        });
+      }
+      
+   };
+
     return (
       <Box>
         <Layout />
@@ -244,8 +307,8 @@ import {
                 </TableContainer>
                 {
                   dataMax.length == 2 ?
-                    <Box mt="4" align="center">
-                      <Link
+                  <Box mt="4" align="center">
+                      <Button
                         py="2.5"
                         px="4"
                         rounded="md"
@@ -255,10 +318,10 @@ import {
                           textDecoration: "none",
                         }}
                         fontSize={{ base: 12, lg: 14 }}
-                        href="/Grafik"
+                        onClick={onOpen1}
                       >
-                        <strong>Buat Grafik</strong>
-                      </Link>
+                        <strong>Buat Grafik Maximize</strong>
+                      </Button>
                     </Box>
                     : <></>
                 }
@@ -424,7 +487,7 @@ import {
                 {
                   dataMin.length == 2 ?
                     <Box mt="4" align="center">
-                      <Link
+                      <Button
                         py="2.5"
                         px="4"
                         rounded="md"
@@ -434,10 +497,10 @@ import {
                           textDecoration: "none",
                         }}
                         fontSize={{ base: 12, lg: 14 }}
-                        href="/Grafik"
+                        onClick={onOpen}
                       >
                         <strong>Buat Grafik</strong>
-                      </Link>
+                      </Button>
                     </Box>
                     : <></>
                 }
@@ -445,7 +508,50 @@ import {
   
             </TabPanels>
           </Tabs>
-  
+
+          <Modal isOpen={isOpen1} onClose={onClose1}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Grafik Maximize</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                    <Text>Data tidak bisa diubah setelah membuat grafik</Text>
+              </ModalBody>
+
+              <ModalFooter justifyContent="center">
+                <Button colorScheme='blue' mr={3} onClick={onClose1} size="sm">
+                  Batal
+                </Button>
+                <Button colorScheme='blue' mr={3} onClick={grafikMaximize} size="sm">
+                  Buat
+                </Button>
+              
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+                
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Grafik Minimize</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                    <Text>Data tidak bisa diubah setelah membuat grafik</Text>
+              </ModalBody>
+
+              <ModalFooter justifyContent="center">
+                <Button colorScheme='blue' mr={3} onClick={onClose} size="sm">
+                  Batal
+                </Button>
+                <Button colorScheme='blue' mr={3} onClick={grafikMinimize} size="sm">
+                  Buat
+                </Button>
+              
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+
+
         </Box>
   
       </Box>

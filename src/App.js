@@ -234,7 +234,7 @@ const App = () => {
                         >
                           <option value='1'>Kelompok 1</option>
                           <option value='2'>Kelompok 2</option>
-                          <option value='3'>Kelompok 3</option>
+                          {/* <option value='3'>Kelompok 3</option>
                           <option value='4'>Kelompok 4</option>
                           <option value='5'>Kelompok 5</option>
                           <option value='6'>Kelompok 6</option>
@@ -261,7 +261,7 @@ const App = () => {
                           <option value='22'>Kelompok 22</option>
                           <option value='23'>Kelompok 23</option>
                           <option value='24'>Kelompok 24</option>
-                          <option value='25'>Kelompok 25</option>
+                          <option value='25'>Kelompok 25</option> */}
                         </Select>
 
                       </FormControl>
@@ -281,10 +281,10 @@ const App = () => {
                         >
                           <option value='1'> 1</option>
                           <option value='2'> 2</option>
-                          <option value='3'> 3</option>
+                          {/* <option value='3'> 3</option>
                           <option value='4'> 4</option>
                           <option value='5'> 5</option>
-                          <option value='6'> 6</option>
+                          <option value='6'> 6</option> */}
                         </Select>
 
                       </FormControl>
