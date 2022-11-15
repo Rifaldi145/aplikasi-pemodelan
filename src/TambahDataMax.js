@@ -47,10 +47,12 @@ const TambahDataMax = () => {
 
   const [ObjectiveX1, setObjectiveX1] = useState('');
   const [ObjectiveX2, setObjectiveX2] = useState('');
+  const [ObjectiveX3, setObjectiveX3] = useState('');
 
   const [ResultObj, setResultObj] = useState('');
   const [ResultX1, setResultX1] = useState('');
   const [ResultX2, setResultX2] = useState('');
+  const [ResultX3, setResultX3] = useState('');
 
   const [users, setUsers] = useState(null);
   const [exams, setExams] = useState(null);
@@ -113,12 +115,16 @@ const TambahDataMax = () => {
       showToast('Objective', 'X1 salah!', 'error');
     } else if(ObjectiveX2 != exams.objective_x2) {
       showToast('Objective', 'X2 salah!', 'error');
+    }else if(ObjectiveX3 != exams.objective_x3) {
+      showToast('Objective', 'X3 salah!', 'error');
     } else if(ResultObj != exams.result_obj) {
       showToast('Result', 'Objective salah!', 'error');
     } else if(ResultX1 != exams.result_x1) {
       showToast('Result', 'X1 salah!', 'error');
     } else if(ResultX2 != exams.result_x2) {
       showToast('Result', 'X2 salah!', 'error');
+    }else if(ResultX3 != exams.result_x3) {
+      showToast('Result', 'X3 salah!', 'error');
     } else {
       alert("oke");
       await supabase
@@ -338,7 +344,7 @@ const TambahDataMax = () => {
               <Text fontSize="20px" mb="5">
                 Objective
               </Text>
-              <Grid templateColumns='repeat(2, 1fr)' gap={2}>
+              <Grid templateColumns='repeat(3, 1fr)' gap={2}>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X1</Text>
                   <Input type='number' step="0.01" placeholder='' 
@@ -359,6 +365,17 @@ const TambahDataMax = () => {
                     }
                   />
                 </GridItem>
+
+                <GridItem  >
+                  <Text fontSize="15px" align="center">X3</Text>
+                  <Input type='number' step="0.01" placeholder='' 
+                    onChange={
+                      (event) => {
+                        setObjectiveX3(event.target.value);
+                      }
+                    }
+                  />
+                </GridItem>
               </Grid>
             </Box>
   
@@ -366,7 +383,7 @@ const TambahDataMax = () => {
               <Text fontSize="20px" mb="5">
                 Result
               </Text>
-              <Grid templateColumns='repeat(3, 1fr)' gap={2}>
+              <Grid templateColumns='repeat(4, 1fr)' gap={2}>
                 <GridItem  >
                   <Text fontSize="15px" align="center">Obj</Text>
                   <Input type='number' step="0.01" placeholder='' 
@@ -395,6 +412,17 @@ const TambahDataMax = () => {
                     onChange={
                       (event) => {
                         setResultX2(event.target.value);
+                      }
+                    }
+                  />
+                </GridItem>
+
+                <GridItem  >
+                  <Text fontSize="15px" align="center">X3</Text>
+                  <Input type='number' step="0.01" placeholder='' 
+                    onChange={
+                      (event) => {
+                        setResultX3(event.target.value);
                       }
                     }
                   />
