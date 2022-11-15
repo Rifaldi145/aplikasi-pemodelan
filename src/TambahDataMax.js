@@ -29,18 +29,21 @@ const TambahDataMax = () => {
 
   const [C1X1, setC1X1] = useState('');
   const [C1X2, setC1X2] = useState('');
+  const [C1X3, setC1X3] = useState('');
   const [C1LessThan, setC1LessThan] = useState('');
   const [C1Low, setC1Low] = useState('');
   const [C1Up, setC1Up] = useState('');
 
   const [C2X1, setC2X1] = useState('');
   const [C2X2, setC2X2] = useState('');
+  const [C2X3, setC2X3] = useState('');
   const [C2LessThan, setC2LessThan] = useState('');
   const [C2Low, setC2Low] = useState('');
   const [C2Up, setC2Up] = useState('');
 
   const [C3X1, setC3X1] = useState('');
   const [C3X2, setC3X2] = useState('');
+  const [C3X3, setC3X3] = useState('');
   const [C3LessThan, setC3LessThan] = useState('');
   const [C3Low, setC3Low] = useState('');
   const [C3Up, setC3Up] = useState('');
@@ -85,6 +88,8 @@ const TambahDataMax = () => {
       showToast('Constraint 1', 'X1 salah!', 'error');
     } else if(C1X2 != exams.constraint_1_x2) {
       showToast('Constraint 1', 'X2 salah!', 'error');
+    }else if(C1X3 != exams.constraint_1_x3) {
+      showToast('Constraint 1', 'X3 salah!', 'error');
     } else if(C1LessThan != exams.constraint_1_lessthan) {
       showToast('Constraint 1', 'Less than salah!', 'error');
     } else if(C1Low != exams.constraint_1_low) {
@@ -95,6 +100,8 @@ const TambahDataMax = () => {
       showToast('Constraint 2', 'X1 salah!', 'error');
     } else if(C2X2 != exams.constraint_2_x2) {
       showToast('Constraint 2', 'X2 salah!', 'error');
+    }else if(C2X3 != exams.constraint_2_x3) {
+      showToast('Constraint 2', 'X3 salah!', 'error');
     } else if(C2LessThan != exams.constraint_2_lessthan) {
       showToast('Constraint 2', 'Less than salah!', 'error');
     } else if(C2Low != exams.constraint_2_low) {
@@ -102,15 +109,17 @@ const TambahDataMax = () => {
     } else if(C2Up != exams.constraint_2_up) {
       showToast('Constraint 2', 'Up salah!', 'error');
     } else if(C3X1 != exams.constraint_3_x1) {
-      showToast('Constraint 2', 'X1 salah!', 'error');
+      showToast('Constraint 3', 'X1 salah!', 'error');
     } else if(C3X2 != exams.constraint_3_x2) {
-      showToast('Constraint 2', 'X2 salah!', 'error');
+      showToast('Constraint 3', 'X2 salah!', 'error');
+    }else if(C3X3 != exams.constraint_3_x3) {
+      showToast('Constraint 3', 'X3 salah!', 'error');
     } else if(C3LessThan != exams.constraint_3_lessthan) {
-      showToast('Constraint 2', 'Less than salah!', 'error');
+      showToast('Constraint 3', 'Less than salah!', 'error');
     } else if(C3Low != exams.constraint_3_low) {
-      showToast('Constraint 2', 'Low salah!', 'error');
+      showToast('Constraint 3', 'Low salah!', 'error');
     } else if(C3Up != exams.constraint_3_up) {
-      showToast('Constraint 2', 'Up salah!', 'error');
+      showToast('Constraint 3', 'Up salah!', 'error');
     } else if(ObjectiveX1 != exams.objective_x1) {
       showToast('Objective', 'X1 salah!', 'error');
     } else if(ObjectiveX2 != exams.objective_x2) {
@@ -168,7 +177,7 @@ const TambahDataMax = () => {
               <Text fontSize="20px" mb="5">
                 Constraint_1
               </Text>
-              <Grid templateColumns='repeat(5, 1fr)' gap={2}>
+              <Grid templateColumns='repeat(6, 1fr)' gap={2}>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X1</Text>
                   <Input type='number' step="0.01" placeholder='' 
@@ -189,6 +198,18 @@ const TambahDataMax = () => {
                     }
                   />
                 </GridItem>
+                
+                <GridItem  >
+                  <Text fontSize="15px" align="center">X3</Text>
+                  <Input type='number' step="0.01" placeholder='' 
+                    onChange={
+                      (event) => {
+                        setC1X3(event.target.value);
+                      }
+                    }
+                  />
+                </GridItem>
+
                 <GridItem  >
                   <Text fontSize="15px" align="center">''</Text>
                   <Input type='number' step="0.01" placeholder='' 
@@ -226,7 +247,7 @@ const TambahDataMax = () => {
               <Text fontSize="20px" mb="5">
                 Constraint_2
               </Text>
-              <Grid templateColumns='repeat(5, 1fr)' gap={2}>
+              <Grid templateColumns='repeat(6, 1fr)' gap={2}>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X1</Text>
                   <Input type='number' step="0.01" placeholder='' 
@@ -243,6 +264,16 @@ const TambahDataMax = () => {
                     onChange={
                       (event) => {
                         setC2X2(event.target.value);
+                      }
+                    }
+                  />
+                </GridItem>
+                <GridItem  >
+                  <Text fontSize="15px" align="center">X3</Text>
+                  <Input type='number' step="0.01" placeholder='' 
+                    onChange={
+                      (event) => {
+                        setC2X3(event.target.value);
                       }
                     }
                   />
@@ -284,7 +315,7 @@ const TambahDataMax = () => {
               <Text fontSize="20px" mb="5">
                 Constraint_3
               </Text>
-              <Grid templateColumns='repeat(5, 1fr)' gap={2}>
+              <Grid templateColumns='repeat(6, 1fr)' gap={2}>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X1</Text>
                   <Input type='number' step="0.01" placeholder='' 
@@ -301,6 +332,16 @@ const TambahDataMax = () => {
                     onChange={
                       (event) => {
                         setC3X2(event.target.value);
+                      }
+                    }
+                  />
+                </GridItem>
+                <GridItem  >
+                  <Text fontSize="15px" align="center">X3</Text>
+                  <Input type='number' step="0.01" placeholder='' 
+                    onChange={
+                      (event) => {
+                        setC3X3(event.target.value);
                       }
                     }
                   />
