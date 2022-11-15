@@ -20,6 +20,8 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import Layout from './components/Layout';
 
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import Zoom from "chartjs-plugin-zoom";
+
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -49,7 +51,8 @@ ChartJS.register(
   ChartDataLabels,
   Filler,
   PointElement,
-  LineElement
+  LineElement,
+  Zoom
 );
 
 const Dashboard = () => {
@@ -80,11 +83,11 @@ const Dashboard = () => {
     .order('anggota', {
       ascending: true}
     )
-    .eq('kelompok', user.data.user.user_metadata.kelompok)
-    .eq('grafik', 1);
+    .eq('kelompok', user.data.user.user_metadata.kelompok);
+    // .eq('grafik', 1);
 
     var labelMax = [];
-    var arrMaxObj = [];
+    // var arrMaxObj = [];
     var arrMaxX1 = [];
     var arrMaxX2 = [];
     var arrMaxX3 = [];
@@ -92,7 +95,7 @@ const Dashboard = () => {
     exam_max.data.map(function(rows, i) {
       labelMax.push(`Anggota ${rows.anggota}`);
 
-      arrMaxObj.push(rows.result_obj)
+      // arrMaxObj.push(rows.result_obj)
       arrMaxX1.push(rows.result_x1)
       arrMaxX2.push(rows.result_x2)
       arrMaxX3.push(rows.result_x3)
@@ -101,12 +104,12 @@ const Dashboard = () => {
     setDataChartMax({
       labels: labelMax,
       datasets: [
-        {
-          label: "Obj",
-          data: arrMaxObj,
-          fill: true,
-          borderColor: "#f4722b"
-        },
+        // {
+        //   label: "Obj",
+        //   data: arrMaxObj,
+        //   fill: true,
+        //   borderColor: "#f4722b"
+        // },
         {
           label: "X1",
           data: arrMaxX1,
@@ -136,11 +139,11 @@ const Dashboard = () => {
     .order('anggota', {
       ascending: true}
     )
-    .eq('kelompok', user.data.user.user_metadata.kelompok)
-    .eq('grafik', 1);
+    .eq('kelompok', user.data.user.user_metadata.kelompok);
+    // .eq('grafik', 1);
 
     var labelMin = [];
-    var arrMinObj = [];
+    // var arrMinObj = [];
     var arrMinX1 = [];
     var arrMinX2 = [];
     var arrMinX3 = [];
@@ -148,7 +151,7 @@ const Dashboard = () => {
     exam_min.data.map(function(rows, i) {
       labelMin.push(`Anggota ${rows.anggota}`);
 
-      arrMinObj.push(rows.result_obj)
+      // arrMinObj.push(rows.result_obj)
       arrMinX1.push(rows.result_x1)
       arrMinX2.push(rows.result_x2)
       arrMinX3.push(rows.result_x3)
@@ -157,12 +160,12 @@ const Dashboard = () => {
     setDataChartMin({
       labels: labelMin,
       datasets: [
-        {
-          label: "Obj",
-          data: arrMinObj,
-          fill: true,
-          borderColor: "#f4722b"
-        },
+        // {
+        //   label: "Obj",
+        //   data: arrMinObj,
+        //   fill: true,
+        //   borderColor: "#f4722b"
+        // },
         {
           label: "X1",
           data: arrMinX1,
@@ -195,14 +198,58 @@ const Dashboard = () => {
         <Box border="2px solid #f7f7f7" p="5" borderRadius="5px">
           <Text align="center"> Grafik Maximize</Text>
           <div id="chartdiv" style={{ width: "100%", height: "500px" }}>
-            <Line data={dataChartMax} />
+            <Line
+              data={dataChartMax}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  zoom: {
+                    pan: { enabled: true, mode: "x", threshold: 10 },
+                    zoom: {
+                      mode: "x",
+                      drag: {
+                        enabled: true,
+                        backgroundColor: "rgba(225,0,225,0.3)",
+                      },
+                      wheel: {
+                        enabled: true,
+                        modifierKey: "alt",
+                      },
+                    },
+                  },
+                },
+              }}
+            />
           </div>
         </Box>
 
           <Box border="2px solid #f7f7f7" p="5" borderRadius="5px">
           <Text align="center">Grafik Minimize</Text>
           <div id="chartdiv" style={{ width: "100%", height: "500px" }}>
-            <Line data={dataChartMin} />
+            <Line
+              data={dataChartMin}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  zoom: {
+                    pan: { enabled: true, mode: "x", threshold: 10 },
+                    zoom: {
+                      mode: "x",
+                      drag: {
+                        enabled: true,
+                        backgroundColor: "rgba(225,0,225,0.3)",
+                      },
+                      wheel: {
+                        enabled: true,
+                        modifierKey: "alt",
+                      },
+                    },
+                  },
+                },
+              }}
+            />
           </div>
         </Box>
 
