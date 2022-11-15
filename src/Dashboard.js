@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   ChakraProvider,
@@ -17,161 +17,241 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-import Layout from './components/Layout'
+import Layout from './components/Layout';
 
-class Dashboard extends Component {
-  componentDidMount() {
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ArcElement,
+    Filler,
+    PointElement,
+    LineElement
+} from 'chart.js';
+import { Bar, Pie, Line } from 'react-chartjs-2';
 
-    let root = am5.Root.new("chartdiv");
+import { supabase } from './components/supabase';
+import { useNavigate } from 'react-router-dom';
 
-    let chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: true,
-  panY: true,
-  wheelX: "panX",
-  wheelY: "zoomX",
-  pinchZoomX:true
-}));
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+  ChartDataLabels,
+  Filler,
+  PointElement,
+  LineElement
+);
 
-// Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-let xRenderer = am5xy.AxisRendererX.new(root, {});
-xRenderer.grid.template.set("forceHidden", true);
-xRenderer.labels.template.setAll({multiLocation: 0, location:0});
-
-let xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
-  baseInterval: { timeUnit: "minute", count: 30 },
-  renderer: xRenderer,
-  tooltip: am5.Tooltip.new(root, {}),
-  extraMin: 0.01,
-  extraMax: 0.01,
-  tooltipLocation: 0
-}));
-
-let yRenderer = am5xy.AxisRendererY.new(root, {});
-yRenderer.grid.template.set("forceHidden", true);
-
-let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  renderer: yRenderer
-}));
-
-// Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-let cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-  behavior: "none",
-  xAxis: xAxis
-}));
-cursor.lineY.set("visible", false);
-
-// Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-let series = chart.series.push(am5xy.LineSeries.new(root, {
-  name: "Series",
-  xAxis: xAxis,
-  yAxis: yAxis,
-  valueYField: "value",
-  valueXField: "category",
-  locationX: 0,
-  seriesTooltipTarget: "bullet",
-  tooltip: am5.Tooltip.new(root, {
-    labelText: "{valueY}"
-  })
-}));
-
-series.bullets.push(function() {
-  let circleTemplate = am5.Template.new({
-    radius: 6,
-    templateField: "bulletSettings",
-    fill: series.get("fill"),
-    strokeWidth: 2,
-    stroke: root.interfaceColors.get("background")
-  })
-
-  let circle = am5.Circle.new(root, {}, circleTemplate);
-
-  return am5.Bullet.new(root, {
-    sprite: circle,
-    locationX: 0
-  });
-});
-
-function createGuide(value, text, dashArray) {
-  let guideDataItem = yAxis.makeDataItem({ value: value });
-  yAxis.createAxisRange(guideDataItem);
-  guideDataItem.get("grid").setAll({
-    forceHidden: false,
-    strokeOpacity: 0.2,
-    strokeDasharray: dashArray
+const Dashboard = () => {
+  const navigateTo = useNavigate();
+  const [dataChartMax, setDataChartMax] = useState({
+    labels: ["Anggota 1", "Anggota 2"],
+    datasets: [
+      {
+        label: "Obj",
+        data: [0, 0],
+        fill: true,
+        borderColor: "#f4722b"
+      },
+      {
+        label: "X1",
+        data: [0, 0],
+        fill: false,
+        borderColor: "#742774"
+      },
+      {
+        label: "X2",
+        data: [0, 0],
+        fill: false,
+        borderColor: "#0000ff"
+      },
+      {
+        label: "X3",
+        data: [0, 0],
+        fill: false,
+        borderColor: "#b6c0b3"
+      }
+    ]
   });
 
-  let label = guideDataItem.get("label");
-  label.setAll({
-    text: text,
-    isMeasured: false,
-    centerY: am5.p100
+  const [dataChartMin, setDataChartMin] = useState({
+    labels: ["Anggota 1", "Anggota 2"],
+    datasets: [
+      {
+        label: "Obj",
+        data: [0, 0],
+        fill: true,
+        borderColor: "#f4722b"
+      },
+      {
+        label: "X1",
+        data: [0, 0],
+        fill: false,
+        borderColor: "#742774"
+      },
+      {
+        label: "X2",
+        data: [0, 0],
+        fill: false,
+        borderColor: "#0000ff"
+      },
+      {
+        label: "X3",
+        data: [0, 0],
+        fill: false,
+        borderColor: "#b6c0b3"
+      }
+    ]
   });
-
-  label.adapters.add("x", function(x) {
-    return chart.plotContainer.width();
-  })
   
-  chart.events.on("boundschanged", function(){
-    label.set("x", label.get("x"))
-  })  
-}
+  useEffect(() => {
+    getDataMinMax();
+  }, []);
 
-
-createGuide(98.8, "LCL", [2, 2]);
-createGuide(100.1, "CL");
-createGuide(101.2, "UCL", [2, 2]);
-
-
-let data = [{
-  "category": new Date(2020, 0, 1, 22, 30).getTime(),
-  "value": 99.71
-}, {
-  "category": new Date(2020, 0, 1, 23, 0).getTime(),
-  "value": 99.13
-}];
-
-
-    xAxis.data.setAll(data);
-    series.data.setAll(data);
-
-    // Add legend
-
-    this.root = root;
-  }
-
-  componentWillUnmount() {
-    if (this.root) {
-      this.root.dispose();
+  const getDataMinMax = async () => {
+    const user = await supabase.auth.getUser();
+    if (!user) {
+      navigateTo("/");
     }
-  }
 
-  render() {
-    return (
-      <Box>
-        <Layout />
-        <Box mt="85px" bg="#f6f6f6" p="5" >
-          <Text ml="10" color="#000">Dashboard</Text>
-        </Box>
-        <SimpleGrid columns={{ sm: 1, lg: 2 }} mt="-10" spacing={5} p="20">
-          <Box border="2px solid #f7f7f7" p="5" borderRadius="5px">
-            <Text align="center"> Grafik Maximize</Text>
-            <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
-          </Box>
+    let exam_max = await supabase
+    .from('exam_maximizes')
+    .select('result_obj, result_x1, result_x2, result_x3')
+    .order('anggota', {
+      ascending: true}
+    )
+    .eq('kelompok', user.data.user.user_metadata.kelompok)
+    .eq('status', 1);
 
-           <Box border="2px solid #f7f7f7" p="5" borderRadius="5px">
-            <Text align="center">Grafik Minimize</Text>
-            <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
-          </Box>
+    var labelMax = ["Anggota 1", "Anggota 2"];
+    var arrMaxObj = [];
+    var arrMaxX1 = [];
+    var arrMaxX2 = [];
+    var arrMaxX3 = [];
+    exam_max.data.map(function(rows, i) {
+      arrMaxObj.push(rows.result_obj)
+      arrMaxX1.push(rows.result_x1)
+      arrMaxX2.push(rows.result_x2)
+      arrMaxX3.push(rows.result_x3)
+    });
 
-        </SimpleGrid>
+    setDataChartMax({
+      labels: labelMax,
+      datasets: [
+        {
+          label: "Obj",
+          data: arrMaxObj,
+          fill: true,
+          borderColor: "#f4722b"
+        },
+        {
+          label: "X1",
+          data: arrMaxX1,
+          fill: false,
+          borderColor: "#742774"
+        },
+        {
+          label: "X2",
+          data: arrMaxX2,
+          fill: false,
+          borderColor: "#0000ff"
+        },
+        {
+          label: "X3",
+          data: arrMaxX3,
+          fill: false,
+          borderColor: "#b6c0b3"
+        }
+      ]
+    });
 
+    let exam_min = await supabase
+    .from('exam_minimizes')
+    .select('result_obj, result_x1, result_x2, result_x3')
+    .order('anggota', {
+      ascending: true}
+    )
+    .eq('kelompok', user.data.user.user_metadata.kelompok)
+    .eq('status', 1);
+
+    var labelMin = ["Anggota 1", "Anggota 2"];
+    var arrMinObj = [];
+    var arrMinX1 = [];
+    var arrMinX2 = [];
+    var arrMinX3 = [];
+    exam_min.data.map(function(rows, i) {
+      arrMinObj.push(rows.result_obj)
+      arrMinX1.push(rows.result_x1)
+      arrMinX2.push(rows.result_x2)
+      arrMinX3.push(rows.result_x3)
+    });
+
+    setDataChartMin({
+      labels: labelMin,
+      datasets: [
+        {
+          label: "Obj",
+          data: arrMinObj,
+          fill: true,
+          borderColor: "#f4722b"
+        },
+        {
+          label: "X1",
+          data: arrMinX1,
+          fill: false,
+          borderColor: "#742774"
+        },
+        {
+          label: "X2",
+          data: arrMinX2,
+          fill: false,
+          borderColor: "#0000ff"
+        },
+        {
+          label: "X3",
+          data: arrMinX3,
+          fill: false,
+          borderColor: "#b6c0b3"
+        }
+      ]
+    })
+  };
+
+  return (
+    <Box>
+      <Layout />
+      <Box mt="85px" bg="#f6f6f6" p="5" >
+        <Text ml="10" color="#000">Dashboard</Text>
       </Box>
+      <SimpleGrid columns={{ sm: 1, lg: 2 }} mt="-10" spacing={5} p="20">
+        <Box border="2px solid #f7f7f7" p="5" borderRadius="5px">
+          <Text align="center"> Grafik Maximize</Text>
+          <div id="chartdiv" style={{ width: "100%", height: "500px" }}>
+            <Line data={dataChartMax} />
+          </div>
+        </Box>
 
-    );
-  }
+          <Box border="2px solid #f7f7f7" p="5" borderRadius="5px">
+          <Text align="center">Grafik Minimize</Text>
+          <div id="chartdiv" style={{ width: "100%", height: "500px" }}>
+            <Line data={dataChartMin} />
+          </div>
+        </Box>
+
+      </SimpleGrid>
+
+    </Box>
+  )
+
 }
-
 export default Dashboard;
