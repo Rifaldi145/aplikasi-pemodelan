@@ -147,7 +147,7 @@ const Login = () => {
                         loading ?
                         (
                             <GridItem colSpan={2} p={1}>
-                                    <Text align="center">Silahkan Cek Email Anda</Text>
+                                    <Text align="center" color="#2c6f05"  fontSize="12px">Silahkan Cek Email Anda</Text>
                             </GridItem>
                         ) :
                         (
