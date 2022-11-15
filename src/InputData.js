@@ -139,10 +139,12 @@ import {
   
                         <Td bg="#ececec">X1</Td>
                         <Td bg="#ececec">X2</Td>
+                        <Td bg="#ececec">X3</Td>
   
                         <Td bg="#c1c1c1">Obj</Td>
                         <Td bg="#c1c1c1">X1</Td>
                         <Td bg="#c1c1c1">X2</Td>
+                        <Td bg="#c1c1c1">X3</Td>
                       </Tr>
                     </Thead>
                     <Tbody>
@@ -206,6 +208,9 @@ import {
                             <Td>
                               {rows.objective_x2}
                             </Td>
+                            <Td>
+                              {rows.objective_x3}
+                            </Td>
   
                             <Td>
                               {rows.result_obj}
@@ -215,6 +220,9 @@ import {
                             </Td>
                             <Td>
                               {rows.result_x2}
+                            </Td>
+                            <Td>
+                              {rows.result_x3}
                             </Td>
                           </Tr>
                         );
@@ -297,10 +305,12 @@ import {
   
                         <Td bg="#ececec">X1</Td>
                         <Td bg="#ececec">X2</Td>
+                        <Td bg="#ececec">X3</Td>
   
                         <Td bg="#c1c1c1">Obj</Td>
                         <Td bg="#c1c1c1">X1</Td>
                         <Td bg="#c1c1c1">X2</Td>
+                        <Td bg="#c1c1c1">X3</Td>
                       </Tr>
                     </Thead>
                     <Tbody>
@@ -364,6 +374,9 @@ import {
                             <Td>
                               {rows.objective_x2}
                             </Td>
+                            <Td>
+                              {rows.objective_x3}
+                            </Td>
   
                             <Td>
                               {rows.result_obj}
@@ -373,6 +386,9 @@ import {
                             </Td>
                             <Td>
                               {rows.result_x2}
+                            </Td>
+                            <Td>
+                              {rows.result_x3}
                             </Td>
                           </Tr>
                         );

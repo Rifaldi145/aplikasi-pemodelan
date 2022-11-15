@@ -41,7 +41,7 @@ const App = () => {
       console.log(data);
       localStorage.setItem('session', JSON.stringify(data.session));
       alert("Anda Berhasil Login");
-      navigateTo("/Dasboard");
+      navigateTo("/Dashboard");
     }
   };
 

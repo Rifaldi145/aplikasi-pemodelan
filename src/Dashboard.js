@@ -19,7 +19,7 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 import Layout from './components/Layout'
 
-class Dasboard extends Component {
+class Dashboard extends Component {
   componentDidMount() {
 
     let root = am5.Root.new("chartdiv");
@@ -174,4 +174,4 @@ let data = [{
   }
 }
 
-export default Dasboard;
+export default Dashboard;

@@ -8,7 +8,7 @@ import {
 } from "react-router-dom"
 
 import App from './App'
-import Dasboard from './Dasboard'
+import Dashboard from './Dashboard'
 import InputData from './InputData'
 import TambahDataMin from './TambahDataMin'
 import TambahDataMax from './TambahDataMax'
@@ -22,7 +22,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/Dasboard" element={<Dasboard />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/InputData" element={<InputData />} />
         <Route path="/TambahDataMin" element={<TambahDataMin />} />
         <Route path="/TambahDataMax" element={<TambahDataMax />} />

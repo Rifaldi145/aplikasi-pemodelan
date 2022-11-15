@@ -89,14 +89,14 @@ import {
               alignItems="center"
             >
               <HStack pl={4} display={{ sm: "none", lg: "flex" }} w={'100%'}>
-                <Link to="/Dasboard">
+                <Link to="/Dashboard">
                   <Button variant="transparent-with-icon" pt={1}>
                     Aplikasi Pemodelan
                   </Button>
                 </Link>
               </HStack>
               <HStack display={{ sm: "none", lg: "flex" }}>
-                <Link href="/Dasboard">
+                <Link href="/Dashboard">
                   <Button variant="transparent-with-icon" >
                     Dashboard
                   </Button>
