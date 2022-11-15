@@ -109,30 +109,33 @@ import {
                     <Thead>
                       <Tr>
                         <Th rowSpan="3" bg="#f5f5f5">Urutan Anggota</Th>
-                        <Th colSpan="20" bg="#f5f5f5"></Th>
+                        <Th colSpan="25" bg="#f5f5f5"></Th>
                       </Tr>
                       <Tr >
-                        <Th colSpan="5" bg="#c1c1c1" >constraint_1</Th>
-                        <Th colSpan="5" bg="#ececec">constraint_2</Th>
-                        <Th colSpan="5" bg="#c1c1c1">constraint_3</Th>
-                        <Th colSpan="2" bg="#ececec">objective</Th>
-                        <Th colSpan="3" bg="#c1c1c1">hasil</Th>
+                        <Th colSpan="6" bg="#c1c1c1" >constraint_1</Th>
+                        <Th colSpan="6" bg="#ececec">constraint_2</Th>
+                        <Th colSpan="6" bg="#c1c1c1">constraint_3</Th>
+                        <Th colSpan="3" bg="#ececec">objective</Th>
+                        <Th colSpan="4" bg="#c1c1c1">hasil</Th>
                       </Tr>
                       <Tr>
                         <Td bg="#c1c1c1">X1</Td>
                         <Td bg="#c1c1c1">X2</Td>
+                        <Td bg="#c1c1c1">X3</Td>
                         <Td bg="#c1c1c1">&</Td>
                         <Td bg="#c1c1c1">low</Td>
                         <Td bg="#c1c1c1">up</Td>
   
                         <Td bg="#ececec">X1</Td>
                         <Td bg="#ececec">X2</Td>
+                        <Td bg="#ececec">X3</Td>
                         <Td bg="#ececec">&</Td>
                         <Td bg="#ececec">low</Td>
                         <Td bg="#ececec">up</Td>
   
                         <Td bg="#c1c1c1">X1</Td>
                         <Td bg="#c1c1c1">X2</Td>
+                        <Td bg="#c1c1c1">X3</Td>
                         <Td bg="#c1c1c1">&</Td>
                         <Td bg="#c1c1c1">low</Td>
                         <Td bg="#c1c1c1">up</Td>
@@ -161,6 +164,9 @@ import {
                               {rows.constraint_1_x2}
                             </Td>
                             <Td>
+                              {rows.constraint_1_x3}
+                            </Td>
+                            <Td>
                               {rows.constraint_1_lessthan}
                             </Td>
                             <Td>
@@ -177,6 +183,9 @@ import {
                               {rows.constraint_2_x2}
                             </Td>
                             <Td>
+                              {rows.constraint_2_x3}
+                            </Td>
+                            <Td>
                               {rows.constraint_2_lessthan}
                             </Td>
                             <Td>
@@ -191,6 +200,9 @@ import {
                             </Td>
                             <Td>
                               {rows.constraint_3_x2}
+                            </Td>
+                            <Td>
+                              {rows.constraint_3_x3}
                             </Td>
                             <Td>
                               {rows.constraint_3_lessthan}
@@ -275,30 +287,33 @@ import {
                     <Thead>
                       <Tr>
                         <Th rowSpan="3" bg="#f5f5f5">Urutan Anggota</Th>
-                        <Th colSpan="20" bg="#f5f5f5"></Th>
+                        <Th colSpan="25" bg="#f5f5f5"></Th>
                       </Tr>
                       <Tr >
-                        <Th colSpan="5" bg="#c1c1c1" >constraint_1</Th>
-                        <Th colSpan="5" bg="#ececec">constraint_2</Th>
-                        <Th colSpan="5" bg="#c1c1c1">constraint_3</Th>
-                        <Th colSpan="2" bg="#ececec">objective</Th>
-                        <Th colSpan="3" bg="#c1c1c1">hasil</Th>
+                        <Th colSpan="6" bg="#c1c1c1" >constraint_1</Th>
+                        <Th colSpan="6" bg="#ececec">constraint_2</Th>
+                        <Th colSpan="6" bg="#c1c1c1">constraint_3</Th>
+                        <Th colSpan="3" bg="#ececec">objective</Th>
+                        <Th colSpan="4" bg="#c1c1c1">hasil</Th>
                       </Tr>
                       <Tr>
                         <Td bg="#c1c1c1">X1</Td>
                         <Td bg="#c1c1c1">X2</Td>
+                        <Td bg="#c1c1c1">X3</Td>
                         <Td bg="#c1c1c1">&</Td>
                         <Td bg="#c1c1c1">low</Td>
                         <Td bg="#c1c1c1">up</Td>
   
                         <Td bg="#ececec">X1</Td>
                         <Td bg="#ececec">X2</Td>
+                        <Td bg="#ececec">X3</Td>
                         <Td bg="#ececec">&</Td>
                         <Td bg="#ececec">low</Td>
                         <Td bg="#ececec">up</Td>
   
                         <Td bg="#c1c1c1">X1</Td>
                         <Td bg="#c1c1c1">X2</Td>
+                        <Td bg="#c1c1c1">X3</Td>
                         <Td bg="#c1c1c1">&</Td>
                         <Td bg="#c1c1c1">low</Td>
                         <Td bg="#c1c1c1">up</Td>
@@ -327,6 +342,9 @@ import {
                               {rows.constraint_1_x2}
                             </Td>
                             <Td>
+                              {rows.constraint_1_x3}
+                            </Td>
+                            <Td>
                               {rows.constraint_1_greaterthan}
                             </Td>
                             <Td>
@@ -343,6 +361,9 @@ import {
                               {rows.constraint_2_x2}
                             </Td>
                             <Td>
+                              {rows.constraint_2_x3}
+                            </Td>
+                            <Td>
                               {rows.constraint_2_greaterthan}
                             </Td>
                             <Td>
@@ -357,6 +378,9 @@ import {
                             </Td>
                             <Td>
                               {rows.constraint_3_x2}
+                            </Td>
+                            <Td>
+                              {rows.constraint_3_x3}
                             </Td>
                             <Td>
                               {rows.constraint_3_greaterthan}
