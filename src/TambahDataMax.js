@@ -135,7 +135,7 @@ const TambahDataMax = () => {
     }else if(ResultX3 != exams.result_x3) {
       showToast('Result', 'X3 salah!', 'error');
     } else {
-      alert("oke");
+      alert("Berhasil");
       await supabase
       .from('exam_maximizes')
       .update({
@@ -164,12 +164,26 @@ const TambahDataMax = () => {
     })
   }
 
+  const backButton = async () => {
+      navigateTo("/InputData");
+  };
+
   return (
     <Box>
       <Layout />
       <Box mt="85px" bg="#f6f6f6" p="5" >
         <Text ml="10" color="#000">Tambah Data</Text>
+        <Flex justifyContent="right" mt="-8">
+            <Button 
+              onClick={backButton}
+              bg={"#13416f"}
+              type="submit"
+              size="xs"
+              color={"white"}
+             >Kembali</Button>
+          </Flex>
       </Box>
+      
       <chakra.form onSubmit={handleSubmit}>
         <Box size="md">
           <SimpleGrid columns={{ sm: 1, lg: 3 }} spacing={5} p="20" mt="-10" >

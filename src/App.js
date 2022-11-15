@@ -205,7 +205,7 @@ const App = () => {
                     </GridItem>
                     <GridItem colSpan={2} p={1}>
                       <FormControl id="email">
-                        <FormLabel fontFamily='Inter' fontWeight='600' fontSize="14px">Email                         </FormLabel>
+                        <FormLabel fontFamily='Inter' fontWeight='600' fontSize="14px">Email </FormLabel>
                         <Input
                           type="text"
                           onChange={changeEmail}
@@ -234,6 +234,34 @@ const App = () => {
                         >
                           <option value='1'>Kelompok 1</option>
                           <option value='2'>Kelompok 2</option>
+                          <option value='3'>Kelompok 3</option>
+                          <option value='4'>Kelompok 4</option>
+                          <option value='5'>Kelompok 5</option>
+                          <option value='6'>Kelompok 6</option>
+                          <option value='7'>Kelompok 7</option>
+                          <option value='8'>Kelompok 8</option>
+                          <option value='9'>Kelompok 9</option>
+                          <option value='10'>Kelompok 10</option>
+                          <option value='11'>Kelompok 11</option>
+                          <option value='12'>Kelompok 12</option>
+                          <option value='13'>Kelompok 13</option>
+                          <option value='14'>Kelompok 14</option>
+                          <option value='15'>Kelompok 15</option>
+                          <option value='16'>Kelompok 16</option>
+                          <option value='17'>Kelompok 17</option>
+                          <option value='18'>Kelompok 18</option>
+                          <option value='19'>Kelompok 19</option>
+                          <option value='20'>Kelompok 20</option>
+                          <option value='16'>Kelompok 16</option>
+                          <option value='17'>Kelompok 17</option>
+                          <option value='18'>Kelompok 18</option>
+                          <option value='19'>Kelompok 19</option>
+                          <option value='20'>Kelompok 20</option>
+                          <option value='21'>Kelompok 21</option>
+                          <option value='22'>Kelompok 22</option>
+                          <option value='23'>Kelompok 23</option>
+                          <option value='24'>Kelompok 24</option>
+                          <option value='25'>Kelompok 25</option>
                         </Select>
 
                       </FormControl>
@@ -253,6 +281,10 @@ const App = () => {
                         >
                           <option value='1'> 1</option>
                           <option value='2'> 2</option>
+                          <option value='3'> 3</option>
+                          <option value='4'> 4</option>
+                          <option value='5'> 5</option>
+                          <option value='6'> 6</option>
                         </Select>
 
                       </FormControl>
