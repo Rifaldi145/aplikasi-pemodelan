@@ -42,6 +42,8 @@ import {
     const [dataMin, setDataMin] = useState([]);
     const [users, setUsers] = useState(null);
 
+    const [openGrafixMax, setOpenGrafikMax] = useState(false);
+
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { isOpen1, onOpen1, onClose1 } = useDisclosure()
   
@@ -318,7 +320,10 @@ import {
                           textDecoration: "none",
                         }}
                         fontSize={{ base: 12, lg: 14 }}
-                        onClick={onOpen1}
+                        onClick={() => {
+                          
+                          setOpenGrafikMax(true);
+                      }}
                       >
                         <strong>Buat Grafik Maximize</strong>
                       </Button>
@@ -499,7 +504,7 @@ import {
                         fontSize={{ base: 12, lg: 14 }}
                         onClick={onOpen}
                       >
-                        <strong>Buat Grafik</strong>
+                        <strong>Buat Grafik Minimize</strong>
                       </Button>
                     </Box>
                     : <></>
@@ -509,7 +514,7 @@ import {
             </TabPanels>
           </Tabs>
 
-          <Modal isOpen={isOpen1} onClose={onClose1}>
+          <Modal isOpen={openGrafixMax} >
             <ModalOverlay />
             <ModalContent>
               <ModalHeader>Grafik Maximize</ModalHeader>
@@ -519,7 +524,7 @@ import {
               </ModalBody>
 
               <ModalFooter justifyContent="center">
-                <Button colorScheme='blue' mr={3} onClick={onClose1} size="sm">
+                <Button colorScheme='blue' mr={3}  onClick={() => {setOpenGrafikMax(false);}} size="sm">
                   Batal
                 </Button>
                 <Button colorScheme='blue' mr={3} onClick={grafikMaximize} size="sm">
