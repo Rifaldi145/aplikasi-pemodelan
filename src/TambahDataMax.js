@@ -194,7 +194,7 @@ const TambahDataMax = () => {
               <Grid templateColumns='repeat(6, 1fr)' gap={2}>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X1</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC1X1(event.target.value);
@@ -204,7 +204,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X2</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC1X2(event.target.value);
@@ -215,7 +215,7 @@ const TambahDataMax = () => {
                 
                 <GridItem  >
                   <Text fontSize="15px" align="center">X3</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC1X3(event.target.value);
@@ -226,7 +226,7 @@ const TambahDataMax = () => {
 
                 <GridItem  >
                   <Text fontSize="15px" align="center">''</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC1LessThan(event.target.value);
@@ -236,7 +236,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem >
                   <Text fontSize="15px" align="center">lowBound</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC1Low(event.target.value);
@@ -246,7 +246,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem >
                   <Text fontSize="15px" align="center">upBound</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC1Up(event.target.value);
@@ -264,7 +264,7 @@ const TambahDataMax = () => {
               <Grid templateColumns='repeat(6, 1fr)' gap={2}>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X1</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC2X1(event.target.value);
@@ -274,7 +274,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X2</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC2X2(event.target.value);
@@ -284,7 +284,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X3</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC2X3(event.target.value);
@@ -294,7 +294,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem  >
                   <Text fontSize="15px" align="center">''</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC2LessThan(event.target.value);
@@ -304,7 +304,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem >
                   <Text fontSize="15px" align="center">lowBound</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC2Low(event.target.value);
@@ -314,7 +314,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem >
                   <Text fontSize="15px" align="center">upBound</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC2Up(event.target.value);
@@ -332,7 +332,7 @@ const TambahDataMax = () => {
               <Grid templateColumns='repeat(6, 1fr)' gap={2}>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X1</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC3X1(event.target.value);
@@ -342,7 +342,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X2</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC3X2(event.target.value);
@@ -352,7 +352,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X3</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC3X3(event.target.value);
@@ -362,7 +362,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem  >
                   <Text fontSize="15px" align="center">''</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC3LessThan(event.target.value);
@@ -372,7 +372,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem >
                   <Text fontSize="15px" align="center">lowBound</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC3Low(event.target.value);
@@ -382,7 +382,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem >
                   <Text fontSize="15px" align="center">upBound</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setC3Up(event.target.value);
@@ -402,7 +402,7 @@ const TambahDataMax = () => {
               <Grid templateColumns='repeat(3, 1fr)' gap={2}>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X1</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setObjectiveX1(event.target.value);
@@ -412,7 +412,7 @@ const TambahDataMax = () => {
                 </GridItem>
                 <GridItem  >
                   <Text fontSize="15px" align="center">X2</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setObjectiveX2(event.target.value);
@@ -423,7 +423,7 @@ const TambahDataMax = () => {
 
                 <GridItem  >
                   <Text fontSize="15px" align="center">X3</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setObjectiveX3(event.target.value);
@@ -441,7 +441,7 @@ const TambahDataMax = () => {
               <Grid templateColumns='repeat(4, 1fr)' gap={2}>
                 <GridItem  >
                   <Text fontSize="15px" align="center">Obj</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setResultObj(event.target.value);
@@ -452,7 +452,7 @@ const TambahDataMax = () => {
   
                 <GridItem  >
                   <Text fontSize="15px" align="center">X1</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setResultX1(event.target.value);
@@ -463,7 +463,7 @@ const TambahDataMax = () => {
   
                 <GridItem  >
                   <Text fontSize="15px" align="center">X2</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setResultX2(event.target.value);
@@ -474,7 +474,7 @@ const TambahDataMax = () => {
 
                 <GridItem  >
                   <Text fontSize="15px" align="center">X3</Text>
-                  <Input type='number' step="0.01" placeholder='' 
+                  <Input type='number' step="0.0000000000001" placeholder='' 
                     onChange={
                       (event) => {
                         setResultX3(event.target.value);
