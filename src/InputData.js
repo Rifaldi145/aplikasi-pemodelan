@@ -308,7 +308,7 @@ import {
                   </Table>
                 </TableContainer>
                 {
-                  dataMax.length == 2 ?
+                  dataMax.length >= 2 ?
                   <Box mt="4" align="center">
                       <Button
                         py="2.5"
@@ -490,7 +490,7 @@ import {
                   </Table>
                 </TableContainer>
                 {
-                  dataMin.length == 2 ?
+                  dataMin.length >= 2 ?
                     <Box mt="4" align="center">
                       <Button
                         py="2.5"
