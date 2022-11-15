@@ -83,8 +83,8 @@ const Dashboard = () => {
     .order('anggota', {
       ascending: true}
     )
-    .eq('kelompok', user.data.user.user_metadata.kelompok);
-    // .eq('grafik', 1);
+    .eq('kelompok', user.data.user.user_metadata.kelompok)
+    .eq('grafik', 1);
 
     var labelMax = [];
     // var arrMaxObj = [];
@@ -139,8 +139,8 @@ const Dashboard = () => {
     .order('anggota', {
       ascending: true}
     )
-    .eq('kelompok', user.data.user.user_metadata.kelompok);
-    // .eq('grafik', 1);
+    .eq('kelompok', user.data.user.user_metadata.kelompok)
+    .eq('grafik', 1);
 
     var labelMin = [];
     // var arrMinObj = [];
