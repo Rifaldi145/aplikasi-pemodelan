@@ -60,7 +60,9 @@ import {
         setUsers(user);
       }
       console.log('OK :', user.data.user.user_metadata.kelompok);
-  
+      console.log('USER :', user.data.user.email);
+      
+
       let exam_max = await supabase
         .from('exam_maximizes')
         .select('*')
@@ -100,39 +102,62 @@ import {
               console.log(error);
               alert("error",error);
             } else {
+              sendGrafikLog();
               alert("Grafik Berhasil Dibuat");
-              navigateTo("/Grafik");     
+              
             }
         });
       }
       
    };
+
+   const  grafikMinimize = async (event) => {
+    event.preventDefault();
+    if(dataMin.status == '1'){
+      alert("Error2");
+    }else{
+      
+      await supabase
+      .from('exam_minimizes')
+      .update({
+          "grafik": 1
+      })
+      .eq('kelompok', users.data.user.user_metadata.kelompok)
+      .eq('status', 1)
+      .then(async ({ data, error }) => {
+          if(error) {
+            console.log(error);
+            alert("error",error);
+          } else {
+            sendGrafikLog();
+            alert("Grafik Berhasil Dibuat");
+                
+          }
+      });
+    }
+    
+ };
   
-    const  grafikMinimize = async (event) => {
-      event.preventDefault();
-      if(dataMin.status == '1'){
-        alert("Error2");
-      }else{
-        
-        await supabase
-        .from('exam_minimizes')
-        .update({
-            "grafik": 1
+    const  sendGrafikLog = async () => {
+      
+      await supabase
+        .from('grafik_log')
+        .insert({
+            "email": users.data.user.email,
+            "anggota" : users.data.user.user_metadata.anggota,
+            "kelompok" : users.data.user.user_metadata.kelompok,
         })
-        .eq('kelompok', users.data.user.user_metadata.kelompok)
-        .eq('status', 1)
+        
         .then(async ({ data, error }) => {
             if(error) {
               console.log(error);
               alert("error",error);
             } else {
-              alert("Grafik Berhasil Dibuat");
-              navigateTo("/Grafik");     
+              alert("Success");
+              navigateTo("/Grafik");
             }
         });
-      }
-      
-   };
+   }
 
     return (
       <Box>
