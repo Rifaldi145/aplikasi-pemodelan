@@ -91,7 +91,7 @@ const TambahDataMin = () => {
       showToast('Constraint 1', 'X2 salah!', 'error');
     }else if(C1X3 != exams.constraint_1_x3) {
       showToast('Constraint 1', 'X3 salah!', 'error');
-    } else if(C1LessThan != exams.constraint_1_lessthan) {
+    } else if(C1LessThan != exams.constraint_1_greaterthan) {
       showToast('Constraint 1', 'Less than salah!', 'error');
     } else if(C1Low != exams.constraint_1_low) {
       showToast('Constraint 1', 'Low salah!', 'error');
@@ -103,7 +103,7 @@ const TambahDataMin = () => {
       showToast('Constraint 2', 'X2 salah!', 'error');
     }else if(C2X3 != exams.constraint_2_x3) {
       showToast('Constraint 2', 'X3 salah!', 'error');
-    } else if(C2LessThan != exams.constraint_2_lessthan) {
+    } else if(C2LessThan != exams.constraint_2_greaterthan) {
       showToast('Constraint 2', 'Less than salah!', 'error');
     } else if(C2Low != exams.constraint_2_low) {
       showToast('Constraint 2', 'Low salah!', 'error');
@@ -115,7 +115,7 @@ const TambahDataMin = () => {
       showToast('Constraint 3', 'X2 salah!', 'error');
     }else if(C3X3 != exams.constraint_3_x3) {
       showToast('Constraint 3', 'X3 salah!', 'error');
-    } else if(C3LessThan != exams.constraint_3_lessthan) {
+    } else if(C3LessThan != exams.constraint_3_greaterthan) {
       showToast('Constraint 3', 'Less than salah!', 'error');
     } else if(C3Low != exams.constraint_3_low) {
       showToast('Constraint 3', 'Low salah!', 'error');
