@@ -30,13 +30,13 @@ const Login = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async () => {
+  const handleLoginMagicLink = async () => {
     console.log("DATA EMAIL", email);
     const { data, error } = await supabase.auth.signInWithOtp({
       email,
     })
     if (error) {
-      alert("Harap tunggu beberapa saat lagi untuk login terimakasih!");
+      alert("Maaf Email anda tidak terdaftar atau cek email anda");
       console.log(error);
     } else {
       console.log(data);
@@ -44,6 +44,23 @@ const Login = () => {
       setLoading(true);
     // alert("Anda Berhasil Login");
     // navigateTo("/Dashboard");
+    }
+  };
+
+  const handleLogin = async () => {
+    console.log("DATA EMAIL", email);
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+    if (error) {
+      alert("Email anda tidak terdaftar!");
+      console.log(error);
+    } else {
+      console.log(data);
+      localStorage.setItem('session', JSON.stringify(data.session));
+      alert("Anda Berhasil Login");
+      navigateTo("/Dashboard");
     }
   };
 

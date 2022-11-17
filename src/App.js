@@ -35,25 +35,38 @@ const App = () => {
 
   
   return (
-    <ChakraProvider>
-      <BrowserRouter>
-      {!session ?  
-            <Routes>
-              <Route path="/" element={<Login />} />
-            </Routes> 
-        : 
+  //ROuting magiclink
+  //   <ChakraProvider>
+  //     <BrowserRouter>
+  //     {!session ?  
+  //           <Routes>
+  //             <Route path="/" element={<Login />} />
+  //           </Routes> 
+  //       : 
       
-          <Routes key={session.user.id}>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/Dashboard" element={<Dashboard />} />
-            <Route path="/InputData" element={<InputData />} />
-            <Route path="/TambahDataMin" element={<TambahDataMin />} />
-            <Route path="/TambahDataMax" element={<TambahDataMax />} />
-            <Route path="/Grafik" element={<Grafik />} />
-          </Routes>
-        }
+  //         <Routes key={session.user.id}>
+  //           <Route path="/" element={<Dashboard />} />
+  //           <Route path="/Dashboard" element={<Dashboard />} />
+  //           <Route path="/InputData" element={<InputData />} />
+  //           <Route path="/TambahDataMin" element={<TambahDataMin />} />
+  //           <Route path="/TambahDataMax" element={<TambahDataMax />} />
+  //           <Route path="/Grafik" element={<Grafik />} />
+  //         </Routes>
+  //       }
        
-      </BrowserRouter>
+  //     </BrowserRouter>
+  // </ChakraProvider>
+  <ChakraProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/InputData" element={<InputData />} />
+        <Route path="/TambahDataMin" element={<TambahDataMin />} />
+        <Route path="/TambahDataMax" element={<TambahDataMax />} />
+        <Route path="/Grafik" element={<Grafik />} />
+      </Routes>
+    </BrowserRouter>
   </ChakraProvider>
   );
 }
