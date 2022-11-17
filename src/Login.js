@@ -36,7 +36,7 @@ const Login = () => {
       email,
     })
     if (error) {
-      alert("Email anda tidak terdaftar!");
+      alert("Harap tunggu beberapa saat lagi untuk login terimakasih!");
       console.log(error);
     } else {
       console.log(data);
